@@ -2,20 +2,20 @@
 
 **You say what you need. ZWIG finds the suppliers, calls them, and brings back the best quote.**
 
-This is not a shopping search box. ZWIG is a sourcing agent. Tell it a product or a service — “1 ton AC in Andheri”, “catering for 40 in Mumbai”, “paracetamol 650 in Chandigarh” — and it hunts real businesses, then uses voice AI to talk to them.
-
-<p align="center">
-  <img src="docs/zwig-home.png" alt="ZWIG home: source products from any industry" width="920" />
-</p>
+This is not a shopping search box. ZWIG is a sourcing agent. Tell it a product or a service — “water bottles in Ahmedabad”, “catering for 40 in Mumbai”, “1 ton AC in Andheri” — and it hunts real businesses, then uses voice AI to talk to them.
 
 ## Try sourcing any product or service here
 
 **[Open the live agent →](https://ron-passengers-changing-ages.trycloudflare.com/#/app)**
 
-Type a real requirement. ZWIG will find businesses and come back with suppliers.
+Location starts in **Ahmedabad**. Type a real requirement. ZWIG finds businesses and comes back with suppliers.
 
 <p align="center">
-  <img src="docs/zwig-search.png" alt="ZWIG chat: describe a requirement and source suppliers" width="920" />
+  <img src="docs/zwig-chat.png" alt="ZWIG chat: sourcing water bottles in bulk" width="920" />
+</p>
+
+<p align="center">
+  <img src="docs/zwig-results.png" alt="ZWIG supplier quotes for water bottles" width="920" />
 </p>
 
 ## Watch the 2-minute demo

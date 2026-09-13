@@ -17,6 +17,7 @@ import { formatPrice } from './lib/format'
 import { isIndiaMartUrl } from './lib/resultPresentation'
 
 const LOCATION_STORAGE_KEY = 'pricehunter-location'
+const DEFAULT_LOCATION = 'Ahmedabad'
 const DISPLAY_CURRENCY_STORAGE_KEY = 'pricehunter-display-currency'
 const DEVICE_ID_STORAGE_KEY = 'pricehunter-device-id'
 const LANDING_SEARCH_STORAGE_KEY = 'zwig-landing-search'
@@ -795,7 +796,7 @@ function ChatApp({ demoMode = false, goldLocked = false }) {
   // gold.zwig.in: ids of supplier quotes already rendered, so the responses
   // poll doesn't re-append them.
   const seenQuoteIdsRef = useRef(new Set())
-  const [location, setLocation] = useState('')
+  const [location, setLocation] = useState(DEFAULT_LOCATION)
   const [displayCurrency, setDisplayCurrency] = useState('INR')
   const [attachedImage, setAttachedImage] = useState(null)
   const [attachedImagePreview, setAttachedImagePreview] = useState('')
@@ -837,6 +838,9 @@ function ChatApp({ demoMode = false, goldLocked = false }) {
     const savedLocation = window.localStorage.getItem(LOCATION_STORAGE_KEY)
     if (savedLocation) {
       setLocation(savedLocation)
+    } else {
+      setLocation(DEFAULT_LOCATION)
+      window.localStorage.setItem(LOCATION_STORAGE_KEY, DEFAULT_LOCATION)
     }
     const savedCurrency = window.localStorage.getItem(DISPLAY_CURRENCY_STORAGE_KEY)
     if (DISPLAY_CURRENCIES.includes(savedCurrency)) {
