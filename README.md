@@ -1,41 +1,60 @@
-# PriceHunter
+# ZWIG
 
-A multi-app AI agent that takes a shopping query, searches online stores and nearby local vendors, then ranks both into one result list.
+**You say what you need. ZWIG finds the suppliers, calls them, and brings back the best quote.**
 
-**Live search:** https://ron-passengers-changing-ages.trycloudflare.com/#/app
+This is not a shopping search box. ZWIG is a sourcing agent. Tell it a product or a service — “1 ton AC in Andheri”, “catering for 40 in Mumbai”, “paracetamol 650 in Chandigarh” — and it hunts real businesses, then uses voice AI to talk to them.
 
-## Project overview
+<p align="center">
+  <img src="docs/zwig-home.png" alt="ZWIG home: source products from any industry" width="920" />
+</p>
 
-PriceHunter turns a natural-language request like “1 ton AC in Andheri” into a structured search, then:
+## Try sourcing any product or service here
 
-1. Uses OpenAI to extract product, category, location, and intent.
-2. Pulls live online listings through SerpApi (Google Shopping).
-3. Finds nearby vendors through Google Places.
-4. Optionally calls those vendors by phone (Bolna / Plivo / ElevenLabs). When those credentials are missing, it uses mock call transcripts so the rest of the agent still runs.
+**[Open the live agent →](https://ron-passengers-changing-ages.trycloudflare.com/#/app)**
 
-The web app is a chat UI at `/#/app`. Results come back as a single ranked list of online and offline prices.
+Type a real requirement. ZWIG will find businesses and come back with suppliers.
 
-## External apps used
+<p align="center">
+  <img src="docs/zwig-search.png" alt="ZWIG chat: describe a requirement and source suppliers" width="920" />
+</p>
 
-The agent takes action across **at least three** external apps:
+## Watch the 2-minute demo
 
-| App | What the agent does |
+**[Watch the demo →](https://drive.google.com/file/d/1triJIroP4wk5hHDQiI4FasVIL1hijzYM/view?usp=sharing)**
+
+## How it works
+
+<p align="center">
+  <img src="docs/how-it-works.svg" alt="Four steps: say the need, find businesses, voice AI calls them, you get quotes" width="920" />
+</p>
+
+1. **You say the need** in plain language. No forms. No filters.
+2. **ZWIG finds real businesses** with a live search across Google Maps, Yelp, Facebook, Instagram, and other marketplaces.
+3. **ElevenLabs voice AI calls** the best-fit suppliers and asks for price, stock, and delivery.
+4. **You get ranked quotes** — who can actually fulfill, and at what price.
+
+That is the whole product: find the right suppliers, talk to them, pick the winner.
+
+## External apps
+
+ZWIG does not sit in a spreadsheet. It takes action across live apps:
+
+| App | What ZWIG does |
 |---|---|
-| **OpenAI** | Structures the query and ranks / explains results |
-| **SerpApi (Google Shopping)** | Fetches live online prices |
-| **Google Places** | Discovers nearby local vendors |
-| **Bolna / Plivo / ElevenLabs** | Places outbound voice calls to vendors for live quotes |
+| **Google Maps** | Finds nearby businesses that can actually supply the product or service |
+| **Yelp** | Real-time search for relevant local businesses to call |
+| **Facebook** | Discovers suppliers and storefronts that show up on Facebook |
+| **Instagram and other marketplaces** | Finds sellers and vendors that live on Instagram and similar marketplaces |
+| **ElevenLabs** | Voice AI platform that calls those businesses and gets a live quote |
 
-Search still works if a provider is down: missing SerpApi falls back to demo online listings, missing Places falls back to mock Indian vendors, and missing voice credentials (or `MOCK_VOICE_CALLS=true`) returns instant mock transcripts.
+The loop is simple: **search the places suppliers actually exist → call the best ones → bring the quotes back.**
 
-## Setup instructions
+## Setup
 
-**Requirements:** Python 3.11+, Node 20+, and (optional) MongoDB.
+**Requirements:** Python 3.11+, Node 20+, optional MongoDB.
 
 ```bash
 cp .env.example .env
-# Add OPENAI_API_KEY, SERPAPI_API_KEY, and GOOGLE_PLACES_API_KEY for live data.
-# Leave them blank to run the demo fallbacks.
 
 python3.11 -m venv .venv
 source .venv/bin/activate
@@ -46,17 +65,17 @@ npm install
 VITE_API_URL= npm run build
 cd ..
 
-MOCK_VOICE_CALLS=true FLASH_COMPARE_ENABLED=false \
+MOCK_VOICE_CALLS=true \
   uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8000
 ```
 
 Open [http://localhost:8000/#/app](http://localhost:8000/#/app).
 
-Local frontend-only development:
+Local frontend + API:
 
 ```bash
-cd frontend && npm install && npm run dev   # http://localhost:5173/#/app
-cd backend && uvicorn app.main:app --reload  # http://localhost:8000
+cd frontend && npm install && npm run dev
+cd backend && uvicorn app.main:app --reload
 ```
 
 Docker:
@@ -68,20 +87,13 @@ docker compose up --build
 
 ## Reliability testing
 
-How we verified the agent works:
+How we know it works:
 
-- **Provider fallbacks.** Each external app is optional. The API logs which credentials are present on startup and degrades instead of failing the search.
 - **Health check.** `GET /health` returns `{"status":"ok"}`.
-- **Voice isolation.** `MOCK_VOICE_CALLS=true` keeps search usable without placing real phone calls.
-- **Mongo optional.** If MongoDB is unreachable, search still returns results; persistence logs a warning.
-- **Automated tests.** Backend tests live in `backend/tests` and `backend/test_*.py`. From `backend/`:
+- **Voice isolation.** `MOCK_VOICE_CALLS=true` lets the sourcing flow run without placing a live call.
+- **Mongo is optional.** If the database is down, results still come back.
+- **Automated tests.** From `backend/`:
 
 ```bash
 python -m pytest tests test_deploy_wiring.py test_comparator_attributes.py -q
 ```
-
-## Demo video
-
-**Demo (≤2 minutes):** https://drive.google.com/file/d/1triJIroP4wk5hHDQiI4FasVIL1hijzYM/view?usp=sharing
-
-**Live search:** https://ron-passengers-changing-ages.trycloudflare.com/#/app

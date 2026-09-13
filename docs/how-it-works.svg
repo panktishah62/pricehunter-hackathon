@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">How ZWIG sources suppliers</title>
+  <desc id="desc">You describe a need. ZWIG finds businesses on Google Maps, Yelp, Facebook, and Instagram. ElevenLabs voice AI calls them. You get ranked quotes.</desc>
+  <rect width="1200" height="420" rx="24" fill="#F7F5F0"/>
+  <text x="600" y="48" text-anchor="middle" font-family="Georgia, Times, serif" font-size="28" fill="#0F172A">How ZWIG finds you the best supplier</text>
+
+  <!-- cards -->
+  <g>
+    <rect x="36" y="88" width="250" height="280" rx="20" fill="#FFFFFF" stroke="#E7E5E4"/>
+    <circle cx="68" cy="122" r="16" fill="#0D9488"/>
+    <text x="68" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">1</text>
+    <text x="161" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36">=¬</text>
+    <text x="161" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A">You say the need</text>
+    <text x="161" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">1 ton AC in Andheri</text>
+    <text x="161" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">or any product / service</text>
+  </g>
+
+  <g>
+    <rect x="328" y="88" width="250" height="280" rx="20" fill="#FFFFFF" stroke="#E7E5E4"/>
+    <circle cx="360" cy="122" r="16" fill="#0D9488"/>
+    <text x="360" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">2</text>
+    <text x="453" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36">=</text>
+    <text x="453" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A">Find real businesses</text>
+    <text x="453" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">Google Maps · Yelp</text>
+    <text x="453" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">Facebook · Instagram</text>
+  </g>
+
+  <g>
+    <rect x="620" y="88" width="250" height="280" rx="20" fill="#FFFFFF" stroke="#E7E5E4"/>
+    <circle cx="652" cy="122" r="16" fill="#0D9488"/>
+    <text x="652" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">3</text>
+    <text x="745" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36">=Þ</text>
+    <text x="745" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A">Voice AI calls them</text>
+    <text x="745" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">ElevenLabs talks to</text>
+    <text x="745" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">the best-fit suppliers</text>
+  </g>
+
+  <g>
+    <rect x="912" y="88" width="250" height="280" rx="20" fill="#FFFFFF" stroke="#E7E5E4"/>
+    <circle cx="944" cy="122" r="16" fill="#D4A017"/>
+    <text x="944" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">4</text>
+    <text x="1037" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36"><Æ</text>
+    <text x="1037" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A">You get the quotes</text>
+    <text x="1037" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">Ranked suppliers</text>
+    <text x="1037" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">with live prices</text>
+  </g>
+
+  <path d="M286 228 L328 228" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M578 228 L620 228" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M870 228 L912 228" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>
