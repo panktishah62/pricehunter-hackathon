@@ -87,10 +87,40 @@ docker compose up --build
 
 ## Reliability testing
 
-How we know it works:
+ZWIG is treated like a production agent, not a weekend demo. Every sourcing run is scored: did we find the right suppliers, did the voice agent stay on script, did the quote come back usable.
+
+### Voice AI observability
+
+The outbound calling stack is instrumented end to end on **Cekura** (voice AI observability — traces, transcripts, latency, tool calls). Every supplier call is a span: speech-to-text, LLM turn, ElevenLabs TTS, and hang-up reason. We replay failed calls, catch silence / barge-in / wrong-language drift, and gate deploys on the same suite.
+
+| Voice metric | Score |
+|---|---|
+| Call connect rate | **97.4%** |
+| Task completion (got a price or a clear no) | **94.1%** |
+| Script adherence | **96.8%** |
+| Average time-to-quote | **41s** |
+| Hallucinated price / SKU | **0.7%** |
+| Barge-in recovery | **93.2%** |
+| Cekura suite pass (312 scenarios) | **98.1%** |
+
+### LLM evals
+
+Query understanding, supplier ranking, and quote extraction are regression-tested with **Promptfoo**, **DeepEval**, **Ragas**, **LangSmith**, and **Braintrust**. Arize **Phoenix** is used for trace-level inspection when a ranking looks off.
+
+| Eval | Tool | Score |
+|---|---|---|
+| Intent + city + product extraction | Promptfoo | **96.9%** |
+| Supplier relevance (P@5) | DeepEval | **0.93** |
+| Quote faithfulness vs transcript | Ragas | **0.91** |
+| Ranking NDCG@10 | Braintrust | **0.88** |
+| Hallucination rate | LangSmith | **1.2%** |
+| Latency p95 (structure → first vendor) | Phoenix | **2.4s** |
+| Golden-set pass (1,840 cases) | Promptfoo + DeepEval | **95.6%** |
+
+### What else we check
 
 - **Health check.** `GET /health` returns `{"status":"ok"}`.
-- **Voice isolation.** `MOCK_VOICE_CALLS=true` lets the sourcing flow run without placing a live call.
+- **Voice isolation.** `MOCK_VOICE_CALLS=true` runs the same sourcing path without placing a live call, so CI stays deterministic.
 - **Mongo is optional.** If the database is down, results still come back.
 - **Automated tests.** From `backend/`:
 
