@@ -2,7 +2,7 @@
 
 A multi-app AI agent that takes a shopping query, searches online stores and nearby local vendors, then ranks both into one result list.
 
-**Live search:** `/#/app` on the deployed URL (see Demo below).
+**Live search:** https://ron-passengers-changing-ages.trycloudflare.com/#/app
 
 ## Project overview
 
@@ -82,7 +82,7 @@ python -m pytest tests test_deploy_wiring.py test_comparator_attributes.py -q
 
 ## Demo video
 
-<!-- Replace this link with the 2-minute demo before submitting. -->
+<!-- Replace the video link with a Loom or unlisted YouTube URL before submitting. -->
 **Demo (≤2 minutes):** _add your Loom or unlisted YouTube URL here_
 
-Live search UI: `/#/app` on the public URL in the submission form.
+**Live search:** https://ron-passengers-changing-ages.trycloudflare.com/#/app
