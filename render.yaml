@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: pricehunter-hackathon
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt && cd frontend && npm ci && npm run build
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHONPATH
+        value: backend
+      - key: MOCK_VOICE_CALLS
+        value: "true"
+      - key: FLASH_COMPARE_ENABLED
+        value: "false"
+      - key: AMPLITUDE_DISABLED
+        value: "true"
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SERPAPI_API_KEY
+        sync: false
+      - key: GOOGLE_PLACES_API_KEY
+        sync: false
+      - key: MONGODB_URL
+        sync: false
+      - key: DATABASE_NAME
+        value: pricehunter
+      - key: FRONTEND_ORIGINS
+        sync: false

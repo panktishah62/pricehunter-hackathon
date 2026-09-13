@@ -1,0 +1,182 @@
+{
+  "version": "3.1",
+  "screens": [
+    {
+      "id": "GOLD_LIVE_RATES",
+      "title": "Live Gold Rates",
+      "terminal": true,
+      "data": {
+        "title": {
+          "type": "string",
+          "__example__": "Live Gold Rates"
+        },
+        "subtitle": {
+          "type": "string",
+          "__example__": "999 gold bar 100 grams · Rajkot"
+        },
+        "summary": {
+          "type": "string",
+          "__example__": "8 live dealer rates found"
+        },
+        "best_rate_label": {
+          "type": "string",
+          "__example__": "Best rate"
+        },
+        "best_rate_value": {
+          "type": "string",
+          "__example__": "Rs 9,45,200"
+        },
+        "updated_label": {
+          "type": "string",
+          "__example__": "Updated just now"
+        },
+        "row_1": {
+          "type": "string",
+          "__example__": "1. Dealer A | Rs 9,45,200"
+        },
+        "row_2": {
+          "type": "string",
+          "__example__": "2. Dealer B | Rs 9,45,450"
+        },
+        "row_3": {
+          "type": "string",
+          "__example__": "3. Dealer C | Rs 9,45,900"
+        },
+        "row_4": {
+          "type": "string",
+          "__example__": "4. Dealer D | Rs 9,46,100"
+        },
+        "row_5": {
+          "type": "string",
+          "__example__": "5. Dealer E | Rs 9,46,250"
+        },
+        "row_6": {
+          "type": "string",
+          "__example__": "6. Dealer F | Rs 9,46,400"
+        },
+        "row_7": {
+          "type": "string",
+          "__example__": "7. Dealer G | Rs 9,46,650"
+        },
+        "row_8": {
+          "type": "string",
+          "__example__": "8. Dealer H | Rs 9,46,900"
+        },
+        "search_id": {
+          "type": "string",
+          "__example__": "search-123"
+        },
+        "outreach_vendor_count": {
+          "type": "number",
+          "__example__": 4
+        }
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "gold_rates_form",
+            "children": [
+              {
+                "type": "TextHeading",
+                "text": "${data.title}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.subtitle}"
+              },
+              {
+                "type": "TextCaption",
+                "text": "${data.summary}"
+              },
+              {
+                "type": "TextSubheading",
+                "text": "${data.best_rate_label}"
+              },
+              {
+                "type": "TextHeading",
+                "text": "${data.best_rate_value}"
+              },
+              {
+                "type": "TextCaption",
+                "text": "${data.updated_label}"
+              },
+              {
+                "type": "TextSubheading",
+                "text": "Dealer rate board"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_1}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_2}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_3}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_4}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_5}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_6}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_7}"
+              },
+              {
+                "type": "TextBody",
+                "text": "${data.row_8}"
+              },
+              {
+                "type": "TextSubheading",
+                "text": "What should I do next?"
+              },
+              {
+                "type": "RadioButtonsGroup",
+                "required": true,
+                "name": "next_action",
+                "data-source": [
+                  {
+                    "id": "call_top_dealers",
+                    "title": "Call top dealers"
+                  },
+                  {
+                    "id": "whatsapp_top_dealers",
+                    "title": "WhatsApp top dealers"
+                  },
+                  {
+                    "id": "show_more_dealers",
+                    "title": "Show more dealers"
+                  }
+                ]
+              },
+              {
+                "type": "Footer",
+                "label": "Continue",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "flow_key": "gold_live_rates",
+                    "search_id": "${data.search_id}",
+                    "next_action": "${form.next_action}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

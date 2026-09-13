@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.zwig.twa",
+      "sha256_cert_fingerprints": [
+        "8F:97:31:65:ED:F4:19:91:61:8F:79:DA:5A:DE:99:B5:6A:E1:E4:14:C4:E6:77:36:FC:82:44:64:B9:96:44:39"
+      ]
+    }
+  }
+]

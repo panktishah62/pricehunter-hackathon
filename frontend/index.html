@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Force HTTPS as early as possible. Some in-app browsers (notably the Google
+      app / GSA) open a bare "gold.zwig.in" link over http://. The app then loads
+      over HTTP and its API calls carry Origin: http://gold.zwig.in, which the API
+      CORS allow-list (https only) rejects with a 400 preflight -> "Load failed".
+      Redirecting before anything else loads keeps the origin on https.
+    -->
+    <script>
+      (function () {
+        if (location.protocol === 'http:' &&
+            location.hostname !== 'localhost' &&
+            location.hostname !== '127.0.0.1') {
+          location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=%VITE_SENTRY_RELEASE%" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=%VITE_SENTRY_RELEASE%" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=%VITE_SENTRY_RELEASE%" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#f97316" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ZWIG is an AI-native procurement and supplier discovery platform operated by INCREDIBLE LIFESTYLE SOLUTION PRIVATE LIMITED."
+    />
+    <meta property="og:title" content="ZWIG" />
+    <meta property="og:description" content="AI-native procurement and supplier discovery platform." />
+    <meta property="og:url" content="https://www.zwig.in" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://www.zwig.in" />
+    <title>ZWIG | AI-Native Procurement Platform</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ZWIG",
+        "legalName": "INCREDIBLE LIFESTYLE SOLUTION PRIVATE LIMITED",
+        "url": "https://www.zwig.in",
+        "email": "hello@zwig.in",
+        "foundingDate": "2024-06-12",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "B-21, Suraj Appartment-2, Shroff Road",
+          "addressLocality": "Rajkot",
+          "addressRegion": "Gujarat",
+          "postalCode": "360001",
+          "addressCountry": "IN"
+        },
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "CIN",
+          "value": "U32111GJ2024PTC152428"
+        }
+      }
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1077555725140047');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body>
+    <!-- Meta Pixel noscript fallback -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1077555725140047&ev=PageView&noscript=1" />
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

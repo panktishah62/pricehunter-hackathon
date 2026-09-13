@@ -1,0 +1,12 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      MOCK_VOICE_CALLS: "true"
+      FLASH_COMPARE_ENABLED: "false"
+      AMPLITUDE_DISABLED: "true"
+      FRONTEND_DIST: /frontend/dist

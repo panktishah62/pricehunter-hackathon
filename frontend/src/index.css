@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 font-body text-slate-900 antialiased;
+    background: #ecece6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgba(249, 115, 22, 0.22);
+    color: #0f172a;
+  }
+}
+
+@layer components {
+  /* Platform wordmark marquee */
+  .marquee-track {
+    animation: marquee 32s linear infinite;
+  }
+
+  /* Voice waveform bars on the floating live-call card */
+  .wave-bar {
+    transform-origin: center;
+    animation: wave 1.1s ease-in-out infinite;
+  }
+
+  .zwig-task-float {
+    animation: zwigTaskFloat 5.6s ease-in-out infinite;
+  }
+
+  .zwig-progress-scan {
+    animation: zwigProgressScan 2.8s ease-in-out infinite;
+    transform-origin: left center;
+  }
+
+  .zwig-pulse-dot {
+    animation: zwigPulseDot 1.5s ease-in-out infinite;
+  }
+
+  .zwig-stage-panel {
+    animation: zwigStageIn 0.55s ease-out both;
+  }
+
+  .zwig-stage-item {
+    animation: zwigStageIn 0.45s ease-out both;
+  }
+
+  .zwig-stage-progress {
+    animation: zwigStageProgress 2.4s ease-in-out infinite;
+    transform-origin: left center;
+  }
+
+  .zwig-stage-timer {
+    animation: zwigStageTimer 3.2s linear forwards;
+  }
+
+  .zwig-stage-active {
+    animation: zwigStagePulse 2.4s ease-in-out infinite;
+  }
+
+  .zwig-query-fade {
+    animation: zwigQueryFade 0.5s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .result-card,
+    .marquee-track,
+    .wave-bar,
+    .zwig-task-float,
+    .zwig-progress-scan,
+    .zwig-pulse-dot,
+    .zwig-stage-panel,
+    .zwig-stage-item,
+    .zwig-stage-progress,
+    .zwig-stage-timer,
+    .zwig-stage-active,
+    .zwig-query-fade {
+      animation: none;
+      opacity: 1;
+    }
+
+    .zwig-stage-timer {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes zwigTaskFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes zwigProgressScan {
+  0% {
+    transform: scaleX(0.2);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scaleX(0.86);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(0.2);
+    opacity: 0.55;
+  }
+}
+
+@keyframes zwigPulseDot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 7px rgba(249, 115, 22, 0);
+  }
+}
+
+@keyframes zwigStageIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zwigStageProgress {
+  0% {
+    transform: scaleX(0.08);
+  }
+
+  50% {
+    transform: scaleX(0.92);
+  }
+
+  100% {
+    transform: scaleX(0.08);
+  }
+}
+
+@keyframes zwigStageTimer {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes zwigStagePulse {
+  0%,
+  100% {
+    box-shadow: 0 12px 40px -24px rgba(249, 115, 22, 0.45);
+  }
+
+  50% {
+    box-shadow: 0 16px 48px -20px rgba(249, 115, 22, 0.75);
+  }
+}
+
+@keyframes zwigQueryFade {
+  from {
+    opacity: 0.2;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
