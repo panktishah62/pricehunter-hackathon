@@ -82,7 +82,6 @@ python -m pytest tests test_deploy_wiring.py test_comparator_attributes.py -q
 
 ## Demo video
 
-<!-- Replace the video link with a Loom or unlisted YouTube URL before submitting. -->
-**Demo (≤2 minutes):** _add your Loom or unlisted YouTube URL here_
+**Demo (≤2 minutes):** https://drive.google.com/file/d/1triJIroP4wk5hHDQiI4FasVIL1hijzYM/view?usp=sharing
 
 **Live search:** https://ron-passengers-changing-ages.trycloudflare.com/#/app
